@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class categoryItem extends StatelessWidget {
+class CategoryItem extends StatelessWidget {
   final String title;
   final Color color;
-  categoryItem({this.title, this.color});
+  CategoryItem({this.title, this.color});
 
   @override
   Widget build(BuildContext context) {
