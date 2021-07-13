@@ -7,12 +7,30 @@ class MealItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
-  const MealItem(
-      {@required this.title,
-      @required this.affordability,
-      @required this.complexity,
-      @required this.duration,
-      @required this.imageUrl});
+
+  const MealItem({
+    @required this.title,
+    @required this.affordability,
+    @required this.complexity,
+    @required this.duration,
+    @required this.imageUrl,
+  });
+  String get complexityText {
+    switch (complexity) {
+      case Complexity.Simple:
+        return 'Simple';
+        break;
+      case Complexity.Hard:
+        return 'Hard';
+        break;
+      case Complexity.Challenging:
+        return 'Challenging';
+        break;
+      default:
+        return 'Unknown';
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +54,75 @@ class MealItem extends StatelessWidget {
                   child: Image.network(
                     imageUrl,
                     fit: BoxFit.cover,
+                    width: double.infinity,
+                  ),
+                ),
+                Positioned(
+                  bottom: 20,
+                  right: 15,
+                  child: Container(
+                    width: 300,
+                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                    decoration: BoxDecoration(
+                      color: Colors.black54,
+                      borderRadius: BorderRadius.circular(3),
+                    ),
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                      softWrap: true,
+                      overflow: TextOverflow.fade,
+                    ),
                   ),
                 ),
               ],
+            ),
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.schedule,
+                        color: Colors.orange[400],
+                      ),
+                      SizedBox(
+                        width: 6,
+                      ),
+                      Text(
+                        '$duration min',
+                        style: TextStyle(
+                            color: Colors.teal[400],
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.work,
+                        color: Colors.orange[400],
+                      ),
+                      SizedBox(
+                        width: 6,
+                      ),
+                      Text(
+                        complexityText,
+                        style: TextStyle(
+                            color: Colors.teal[400],
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                ],
+              ),
             )
           ],
         ),
