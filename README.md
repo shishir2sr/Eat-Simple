@@ -1,3 +1,3 @@
 # eat_simple
 
-A new Flutter project.
+Your diet coatch
