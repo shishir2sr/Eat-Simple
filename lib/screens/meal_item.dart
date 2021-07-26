@@ -15,6 +15,7 @@ class MealItem extends StatelessWidget {
     @required this.duration,
     @required this.imageUrl,
   });
+
   String get complexityText {
     switch (complexity) {
       case Complexity.Simple:
@@ -25,6 +26,23 @@ class MealItem extends StatelessWidget {
         break;
       case Complexity.Challenging:
         return 'Challenging';
+        break;
+      default:
+        return 'Unknown';
+        break;
+    }
+  }
+
+  String get affordabilityText {
+    switch (affordability) {
+      case Affordability.Affordable:
+        return 'Affordable';
+        break;
+      case Affordability.Luxurious:
+        return 'Luxurious';
+        break;
+      case Affordability.Pricey:
+        return 'Pricy';
         break;
       default:
         return 'Unknown';
@@ -98,7 +116,7 @@ class MealItem extends StatelessWidget {
                         '$duration min',
                         style: TextStyle(
                             color: Colors.teal[400],
-                            fontSize: 20,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold),
                       )
                     ],
@@ -107,7 +125,7 @@ class MealItem extends StatelessWidget {
                     children: <Widget>[
                       Icon(
                         Icons.work,
-                        color: Colors.orange[400],
+                        color: Colors.blueAccent[400],
                       ),
                       SizedBox(
                         width: 6,
@@ -116,7 +134,25 @@ class MealItem extends StatelessWidget {
                         complexityText,
                         style: TextStyle(
                             color: Colors.teal[400],
-                            fontSize: 20,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.attach_money,
+                        color: Colors.deepPurple[400],
+                      ),
+                      SizedBox(
+                        width: 6,
+                      ),
+                      Text(
+                        affordabilityText,
+                        style: TextStyle(
+                            color: Colors.teal[400],
+                            fontSize: 16,
                             fontWeight: FontWeight.bold),
                       )
                     ],
